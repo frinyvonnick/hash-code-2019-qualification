@@ -17,7 +17,7 @@ function getBestMatch(slide, slideshow) {
       tags1.length - tagInCommon.length,
       tags2.length - tagInCommon.length
     );
-    if (result >= 5) {
+    if (result >= 2) {
       return i;
       // bestScore = result;
       // bestIndex = i;
@@ -32,7 +32,7 @@ module.exports = function sortMagic(slideshow) {
     total: slideshow.length
   });
 
-  const filteredSlideShow = slideshow.filter(slide => slide.tags.length > 30);
+  const filteredSlideShow = slideshow.filter(slide => slide.tags.length > 28);
 
   const result = [];
   const length = filteredSlideShow.length;
