@@ -21,7 +21,7 @@ function solve(problem, file) {
     }
   );
 
-  const slides = sortMagic([...verticals, ...horizontals]);
+  const slides = sortMagic([...verticals]);
   return [slides.length, ...slides.map(l => l.ids.join(" "))];
 }
 
