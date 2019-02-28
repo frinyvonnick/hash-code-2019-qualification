@@ -28,7 +28,7 @@ try {
   if (err.code !== "EEXIST") throw err;
 }
 
-const files = glob.sync("!(node_modules)", {});
+const files = glob.sync("(*.js|package.json)", {});
 const archive = archiver("zip");
 _.each(files, file => archive.file(file, { name: path.basename(file) }));
 archive.finalize().pipe(fs.createWriteStream(dest));
