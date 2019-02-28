@@ -32,16 +32,18 @@ module.exports = function sortMagic(slideshow) {
     total: slideshow.length
   });
 
+  const filteredSlideShow = slideshow.filter(slide => slide.tags.length > 10);
+
   const result = [];
-  const length = slideshow.length;
-  let previousElement = slideshow.pop();
+  const length = filteredSlideShow.length;
+  let previousElement = filteredSlideShow.pop();
   result.push(previousElement);
   do {
-    bar.tick({ reste: slideshow.length });
-    const index = getBestMatch(previousElement, slideshow);
-    previousElement = slideshow.splice(index, 1)[0];
+    bar.tick({ reste: filteredSlideShow.length });
+    const index = getBestMatch(previousElement, filteredSlideShow);
+    previousElement = filteredSlideShow.splice(index, 1)[0];
     result.push(previousElement);
-  } while (result.length < length);
+  } while (result.length < filteredSlideShow.length);
 
   return result;
 };
