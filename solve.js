@@ -10,8 +10,13 @@ const gridUtils = require("./grid-utils");
 // ];
 
 function solve(problem, file) {
-  // destructure this!
-  return [1, problem.findIndex(photo => !photo.vertical)];
+  const horizontals = problem.filter(photo => !photo.vertical);
+  const verticals = _.chunk(problem.filter(photo => photo.vertical), 2);
+
+  return [
+    horizontals.length + verticals.length,
+    [...horizontals, ...verticals]
+  ];
 }
 
 // console.log(solve(photos));
