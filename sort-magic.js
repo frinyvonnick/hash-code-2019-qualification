@@ -12,12 +12,10 @@ function getBestMatch(slide, slideshow) {
     const tags1 = slide.tags;
     const tags2 = currentSlide.tags;
     const tagInCommon = _.intersection(tags1, tags2);
-    const tagsExclusiveFrom1 = _.difference(tags1, tagInCommon);
-    const tagsExclusiveFrom2 = _.difference(tags2, tagInCommon);
     const result = Math.min(
       tagInCommon.length,
-      tagsExclusiveFrom1.length,
-      tagsExclusiveFrom2.length
+      tags1.length - tagInCommon.length,
+      tags2.length - tagInCommon.length
     );
     if (result >= 5) {
       return i;
