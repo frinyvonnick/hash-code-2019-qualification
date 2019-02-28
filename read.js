@@ -31,7 +31,7 @@ const parse = inputText => {
   console.log(inputText);
   const [number, ...photos] = inputText.split("\n");
 
-  return photos.slice(0, photos.length).map((photo, id) => {
+  return photos.slice(0, photos.length - 1).map((photo, id) => {
     const [mode, n, ...tags] = photo.split(" ");
     return {
       id,
