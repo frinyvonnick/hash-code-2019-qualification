@@ -14,15 +14,21 @@ function mapId(photo) {
 }
 
 function solve(problem, file) {
-  console.log(problem, 1);
+  console.log(problem);
   const horizontals = problem.filter(photo => !photo.vertical).map(mapId);
-  const verticals = _.chunk(problem.filter(photo => photo.vertical), 2).map(
-    mapId
+  const verticals = _.chunk(
+    problem.filter(photo => photo.vertical).map(mapId),
+    2
   );
+
+  console.log({
+    verticals,
+    horizontals
+  });
 
   return [
     horizontals.length + verticals.length,
-    [...horizontals, ...verticals].join(" ")
+    ...[...horizontals, ...verticals.map(l => l.join(" "))]
   ];
 }
 
