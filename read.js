@@ -28,11 +28,15 @@ module.exports = function read(filePath) {
 };
 
 const parse = inputText => {
-  const parse = jolicitron((save, n) => []);
-  const { parsedValue, remaining } = parse(inputText);
-  assert.equal(remaining.trim(), "");
-  debug("end");
-  return parsedValue;
+  const [number, ...photos] = inputText.split("\n");
+
+  return photos.map(photo => {
+    const [mode, n, ...tags] = photo.split(" ");
+    return {
+      vertical: mode === "V",
+      tags
+    };
+  });
 };
 
 const assertValid = _.tap(parserOutput => {});
