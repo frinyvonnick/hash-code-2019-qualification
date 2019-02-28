@@ -8,7 +8,10 @@ function mapId(photo) {
 
 module.exports = function group(photos) {
   return _.chunk(
-    photos.sort((a, b) => _.intersection(b.tags, a.tags)).map(mapId),
+    photos
+      .sort((a, b) => _.intersection(b.tags, a.tags))
+      .reverse()
+      .map(mapId),
     2
   );
 };
