@@ -32,8 +32,8 @@ module.exports = function sortMagic(slideshow) {
     total: slideshow.length
   });
 
-  const filteredSlideShow = slideshow.filter(slide => slide.tags.length < 6);
-
+  const filteredSlideShow = slideshow.filter(slide => slide.tags.length < 10);
+  console.log(filteredSlideShow);
   const result = [];
   const length = filteredSlideShow.length;
   let previousElement = filteredSlideShow.pop();
