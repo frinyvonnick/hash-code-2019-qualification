@@ -9,10 +9,7 @@ function mapId(photo) {
 
 function solve(problem, file) {
   const horizontals = problem.filter(photo => !photo.vertical).map(mapId);
-  const verticals = _.chunk(
-    problem.filter(photo => photo.vertical).map(mapId),
-    2
-  );
+  const verticals = group(problem.filter(photo => photo.vertical));
 
   return [
     horizontals.length + verticals.length,
