@@ -43,7 +43,7 @@ module.exports = function sortMagic(slideshow) {
     const index = getBestMatch(previousElement, filteredSlideShow);
     previousElement = filteredSlideShow.splice(index, 1)[0];
     result.push(previousElement);
-  } while (result.length < filteredSlideShow.length);
+  } while (result.length < length);
 
   return result;
 };
