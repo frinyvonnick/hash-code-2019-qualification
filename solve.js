@@ -12,10 +12,8 @@ function solve(problem, file) {
   const horizontals = problem
     .filter(photo => !photo.vertical)
     .map(photo => ({ tags: photo.tags, ids: [photo.id] }));
-  const verticals = _.chunk(
-    group(problem.filter(photo => photo.vertical)),
-    2
-  ).map(slide => {
+  const verticals = group(problem.filter(photo => photo.vertical))
+    .map(slide => {
     return {
       ids: [slide[0].id, slide[1].id],
       tags: _.uniq([...slide[0].tags, ...slide[1].tags])

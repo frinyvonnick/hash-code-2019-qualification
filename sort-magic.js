@@ -1,6 +1,7 @@
 const assert = require("assert");
 const debug = require("debug")("sortMagic");
 const _ = require("lodash");
+const ProgressBar = require("progress");
 
 function getBestMatch(slide, slideshow) {
   let bestScore = 0;
@@ -41,8 +42,12 @@ function getBestMatch(slide, slideshow) {
 
 module.exports = function sortMagic(param) {
   const slideshow = param.map((slide, index) => ({ ...slide, index: index }));
+  const bar = new ProgressBar(":bar :percent :eta", {
+    total: slideshow.length
+  });
 
   return slideshow.reduce((acc, slide, index) => {
+    bar.tick();
     if (index === 0) {
       acc.push(slide);
       slide.isPlaced = true;
