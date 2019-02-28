@@ -11,10 +11,12 @@ function solve(problem, file) {
   const horizontals = problem.filter(photo => !photo.vertical).map(mapId);
   const verticals = group(problem.filter(photo => photo.vertical));
 
-  return [
-    horizontals.length + verticals.length,
-    ...[...horizontals, ...verticals.map(l => l.join(" "))]
-  ];
+  const slides = _.shuffle([
+    ...horizontals,
+    ...verticals.map(l => l.join(" "))
+  ]);
+
+  return [horizontals.length + verticals.length, ...slides];
 }
 
 module.exports = solve;
