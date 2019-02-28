@@ -21,8 +21,8 @@ function solve(problem, file) {
   );
 
   return [
-    // horizontals.length + verticals.length,
-    // [...horizontals, ...verticals]
+    horizontals.length + verticals.length,
+    [...horizontals, ...verticals]
   ];
 }
 
