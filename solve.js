@@ -11,10 +11,7 @@ function solve(problem, file) {
   const horizontals = problem.filter(photo => !photo.vertical).map(mapId);
   const verticals = group(problem.filter(photo => photo.vertical));
 
-  const slides = _.shuffle([
-    ...horizontals,
-    ...verticals.map(l => l.join(" "))
-  ]);
+  const slides = [...horizontals, ...verticals.map(l => l.join(" "))];
 
   return [horizontals.length + verticals.length, ...slides];
 }
