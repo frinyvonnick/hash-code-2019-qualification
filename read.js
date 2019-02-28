@@ -30,9 +30,10 @@ module.exports = function read(filePath) {
 const parse = inputText => {
   const [number, ...photos] = inputText.split("\n");
 
-  return photos.map(photo => {
+  return photos.map((photo, id) => {
     const [mode, n, ...tags] = photo.split(" ");
     return {
+      id,
       vertical: mode === "V",
       tags
     };
