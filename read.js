@@ -28,7 +28,6 @@ module.exports = function read(filePath) {
 };
 
 const parse = inputText => {
-  console.log(inputText);
   const [number, ...photos] = inputText.split("\n");
 
   return photos.slice(0, photos.length - 1).map((photo, id) => {
