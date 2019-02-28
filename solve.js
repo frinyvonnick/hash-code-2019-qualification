@@ -22,7 +22,7 @@ function solve(problem, file) {
 
   return [
     horizontals.length + verticals.length,
-    [...horizontals, ...verticals]
+    [...horizontals, ...verticals].join(" ")
   ];
 }
 
