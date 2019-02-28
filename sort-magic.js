@@ -30,9 +30,9 @@ function getBestMatch(slide, slideshow) {
       tagsExclusiveFrom1.length,
       tagsExclusiveFrom2.length
     );
-    if (result > bestScore) {
+    if (result > 2) {
       bestScore = result;
-      bestIndex = index;
+      bestIndex = currentSlide.index;
     }
   });
 
@@ -40,7 +40,7 @@ function getBestMatch(slide, slideshow) {
 }
 
 module.exports = function sortMagic(param) {
-  const slideshow = param.concat();
+  const slideshow = param.map((slide, index) => ({ ...slide, index: index }));
 
   return slideshow.reduce((acc, slide, index) => {
     if (index === 0) {
