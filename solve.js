@@ -1,6 +1,7 @@
 const debug = require("debug")("solve");
 const _ = require("lodash");
 const gridUtils = require("./grid-utils");
+const group = require("./group");
 
 function mapId(photo) {
   return photo.id;
