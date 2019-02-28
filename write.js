@@ -7,7 +7,7 @@ module.exports = function write(path, solution) {
 };
 
 function writeLines(path, lines) {
-  console.log(lines);
+  // console.log(lines);
   fs.writeFileSync(path, lines.join("\n"));
   debug(`wrote ${lines.length} lines to ${path}`);
 }
