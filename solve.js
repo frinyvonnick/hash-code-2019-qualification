@@ -21,7 +21,7 @@ function solve(problem, file) {
       tags: _.uniq([...slide[0].tags, ...slide[1].tags])
     };
   });
-  const slides = sortMagic([...verticals, ...horizontals]);
+  const slides = [...verticals, ...horizontals];
 
   return [slides.length, ...slides.map(l => l.ids.join(" "))];
 }
