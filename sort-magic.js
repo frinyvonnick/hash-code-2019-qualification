@@ -12,22 +12,21 @@ function getBestMatch(slide, slideshow) {
     const tags1 = slide.tags;
     const tags2 = currentSlide.tags;
     const tagInCommon = _.intersection(tags1, tags2);
-    // const tagsExclusiveFrom1 = _.difference(tags1, tagInCommon);
-    // const tagsExclusiveFrom2 = _.difference(tags2, tagInCommon);
-    const result = tagInCommon.length;
-    // Math.min(
-    //   tagInCommon.length,
-    //   tagsExclusiveFrom1.length,
-    //   tagsExclusiveFrom2.length
-    // );
-    if (result >= 2) {
+    const tagsExclusiveFrom1 = _.difference(tags1, tagInCommon);
+    const tagsExclusiveFrom2 = _.difference(tags2, tagInCommon);
+    const result = Math.min(
+      tagInCommon.length,
+      tagsExclusiveFrom1.length,
+      tagsExclusiveFrom2.length
+    );
+    if (result >= 5) {
       return i;
       // bestScore = result;
-      // bestIndex = index;
+      // bestIndex = i;
     }
   }
 
-  return 0;
+  return bestIndex;
 }
 
 module.exports = function sortMagic(slideshow) {
