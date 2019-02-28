@@ -17,10 +17,10 @@ function getBestMatch(slide, slideshow) {
       tags1.length - tagInCommon.length,
       tags2.length - tagInCommon.length
     );
-    if (result >= 2) {
-      return i;
-      // bestScore = result;
-      // bestIndex = i;
+    if (result >= bestScore) {
+      // return i;
+      bestScore = result;
+      bestIndex = i;
     }
   }
 
@@ -32,8 +32,8 @@ module.exports = function sortMagic(slideshow) {
     total: slideshow.length
   });
 
-  const filteredSlideShow = slideshow.filter(slide => slide.tags.length < 10);
-  console.log(filteredSlideShow);
+  const filteredSlideShow = slideshow.filter(() => true);
+
   const result = [];
   const length = filteredSlideShow.length;
   let previousElement = filteredSlideShow.pop();
